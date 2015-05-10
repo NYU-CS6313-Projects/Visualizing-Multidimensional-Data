@@ -1,4 +1,4 @@
-# Project X
+# Visualizing Multidimensional Data
 
 TODO describe project here
 
