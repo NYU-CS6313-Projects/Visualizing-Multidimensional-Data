@@ -110,7 +110,7 @@ function start() {
   var width = 200;
   var height = 100;
   var radius = 5;
-  var file = "data/PLUTOmdsTSNE1.csv";
+  var file = "data/ozone2.csv";
   var columns = "Xcoord,Ycoord".split(",");
   var fA = "Xcoord";
   var fB = "Ycoord";
@@ -192,8 +192,11 @@ function start() {
 
     var featureMap = {};
     state.clearListeners();
-    allIxs = Dimension.loadAll(data, columns, featureMap);
+    loadedDimensions = Dimension.loadAll(data, columns, featureMap);
+    allIxs = loadedDimensions[0];
+    var labels = loadedDimensions[1];
     state.ixs(allIxs);
+    state.labels(labels);
     state.selIxs([]);
     state.featureA(featureMap[fA]);
     state.featureB(featureMap[fB]);
@@ -253,8 +256,9 @@ function start() {
     featurelistA.setFeatures(state.ixs());
     state.addListener(function(s, cA, cB, cIxs, cSel) {
       if(cSel) {
-        featurelistA.update(s.selIxs());
+        featurelistA.update(s.selIxs(), s.labels());
       }
+      // mynewcompnoent.update(param1, param2....)
     });
 
     // featurelistB = new Featurelist(listB, width, size, function(f) { // selectFeature
@@ -276,15 +280,15 @@ function start() {
       "background-color": "red"
     });
     var hw = size - pads[3] /* left padding */ - pads[1] /* right padding */;
-    histogram = new Histogram(hl, hw, height, 750, "easeInOutCubic", function(ixs) { // onSelect
-      state.selIxs(ixs);
-      state.update(false, false, false, true);
-    });
-    state.addListener(function(s, cA, cB, cIxs, cSel) {
-      if(cA || cIxs || cSel) {
-        histogram.update(s, cA || cIxs);
-      }
-    });
+    // histogram = new Histogram(hl, hw, height, 750, "easeInOutCubic", function(ixs) { // onSelect
+    //   state.selIxs(ixs);
+    //   state.update(false, false, false, true);
+    // });
+    // state.addListener(function(s, cA, cB, cIxs, cSel) {
+    //   if(cA || cIxs || cSel) {
+    //     histogram.update(s, cA || cIxs);
+    //   }
+    // });
   });
 }
 </script>
