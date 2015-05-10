@@ -50,6 +50,7 @@ function Dimension(name, rowCount) {
 } // Category
 Dimension.loadAll = function(data, columns, features) {
   var ixs = [];
+  var names = [];
   var rows = data.length;
   data.forEach(function(row, ix) {
     columns.forEach(function(col) {
@@ -59,6 +60,7 @@ Dimension.loadAll = function(data, columns, features) {
       features[col].setValue(ix, row[col]);
     });
     ixs.push(ix);
+    names.push(row['Category']);
   });
-  return ixs;
+  return [ixs, names];
 };

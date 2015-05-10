@@ -18,7 +18,13 @@ function State() {
   this.ixs = function(_) {
     if(!arguments.length) return ixs;
     ixs = _;
-    ixs.sort(d3.ascending);
+//    ixs.sort(d3.ascending);
+  };
+  var labels = [];
+  this.labels = function(_) {
+    if(!arguments.length) return labels;
+    labels = _;
+//    ixs.sort(d3.ascending);
   };
   var selIxs = [];
   this.selIxs = function(_) {
