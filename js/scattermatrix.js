@@ -45,7 +45,6 @@ d3.csv(datafile, function(error, data) {
     traits.push(attributelist[indexlist[index]]);
   }
   var n = traits.length;
-  console.log(traits)
 
   traits.forEach(function(trait) {
     domainByTrait[trait] = d3.extent(data, function(d) { 
@@ -54,7 +53,6 @@ d3.csv(datafile, function(error, data) {
     });
   });
   rows = rows/indexlist.length;
-  console.log(rows)
 
   xAxis.tickSize(size * n);
   yAxis.tickSize(-size * n);
@@ -91,6 +89,7 @@ d3.csv(datafile, function(error, data) {
       .attr("x", padding)
       .attr("y", padding)
       .attr("dy", ".71em")
+      .style("font-size", (4/(1+indexlist.length)).toString()+"em")
       .text(function(d) { return d.x; });
 
   function plot(p) {
