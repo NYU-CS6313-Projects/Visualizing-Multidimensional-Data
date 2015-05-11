@@ -21,8 +21,7 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .ticks(5);
-
-// var color = d3.scale.category10();
+    
 
 sel.style({
   "display": "inline-block"
@@ -92,7 +91,8 @@ d3.csv(datafile, function(error, data) {
         .attr("y", padding / 2)
         .attr("width", size - padding)
         .attr("height", size - padding)
-        .attr("fill", "white");
+        .attr("fill", "white")
+        .style("stroke", "lightgray");
 
     cell.selectAll("circle")
         .data(data)
