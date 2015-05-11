@@ -34,7 +34,7 @@ d3.csv(datafile, function(error, data) {
   var attributelist = d3.keys(data[0]);
   var traits = [];
   for (index in indexlist) {
-    traits.push(attributelist[indexlist[index]+1]);
+    traits.push(attributelist[indexlist[index]]);
   }
   var n = traits.length;
   console.log(traits)

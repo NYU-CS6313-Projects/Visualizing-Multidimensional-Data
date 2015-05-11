@@ -192,7 +192,7 @@ function start(fileIndex) {
     "btn": true,
     "btn-default": true
   }).text("examine selection").on("click", function() {
-    //$("#scatter").remove();  
+    $("#scatter").empty();  
     scattermatrix = new Scattermatrix(scatter, fileSPM, state.selIxs());
   });
 
