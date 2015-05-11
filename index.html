@@ -93,6 +93,7 @@
   </div>
   <div id="listA"></div>
   <div id="main"></div>
+  <div id="scatter"></div>
   <div id="listB"></div>
   <!-- <div id="histogram"></div> -->
 
@@ -126,8 +127,8 @@ function start(fileIndex) {
   var height = 100;
   var radius = 5;
   var columns = "Xcoord,Ycoord".split(",");
-  var fileList = "data/ozone_TSNE.csv,data/Basketball Tournament_TSNE.csv,data/LSVT_voice_rehabilitation_TSNE.csv,data/World Music_TSNE.csv,data/PLUTOmds.csv".split(",")
-  var file = fileList[fileIndex];
+  var fileListTSNE = "data/ozone_TSNE.csv,data/Basketball Tournament_TSNE.csv,data/LSVT_voice_rehabilitation_TSNE.csv,data/World Music_TSNE.csv,data/PLUTOmds.csv".split(",")
+  var fileTSNE = fileListTSNE[fileIndex];
   var fA = "Xcoord";
   var fB = "Ycoord";
   var allIxs = [];
@@ -143,6 +144,7 @@ function start(fileIndex) {
   });
 
   var main = d3.select("#main");
+  var scatter = d3.select('#scatter');
   var listA = d3.select("#listA");
   var listB = d3.select("#listB");
   var hl = d3.select("#histogram");
@@ -183,7 +185,7 @@ function start(fileIndex) {
     state.update(false, false, true, false);
   });
 
-  d3.csv(file, function(error, data) {
+  d3.csv(fileTSNE, function(error, data) {
     if(error) {
       console.warn(error);
       return;
@@ -225,6 +227,7 @@ function start(fileIndex) {
     }
 
     main.selectAll("*").remove();
+    scatter.selectAll("*").remove();
     listA.selectAll("*").remove();
     listB.selectAll("*").remove();
     hl.selectAll("*").remove();
@@ -242,6 +245,9 @@ function start(fileIndex) {
       }
       state.update(false, false, false, true);
     });
+
+    scattermatrix = new Scattermatrix(scatter, fileListSPM[fileIndex], 0)
+
     var lastIxs = [];
     var lastSel = [];
     var lastTmp = [];
