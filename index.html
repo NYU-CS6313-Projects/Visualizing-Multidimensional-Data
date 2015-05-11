@@ -165,16 +165,6 @@ function start(fileIndex) {
   buttons.append("button").classed({
     "btn": true,
     "btn-default": true
-  }).text("swap axes").on("click", function() {
-    var fA = state.featureA();
-    var fB = state.featureB();
-    state.featureB(fA);
-    state.featureA(fB);
-    state.update(true, true, false, false);
-  });
-  buttons.append("button").classed({
-    "btn": true,
-    "btn-default": true
   }).text("remove selection").on("click", function() {
     var newIxs = removeIxs(state.ixs(), state.selIxs());
     state.ixs(newIxs);
