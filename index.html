@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>simple demo</title>
+  <title>Visualizing Multidimensional Data</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
   <!--<script src="lib/jquery/jquery.min.js" charset="utf-8"></script>
@@ -13,6 +13,7 @@
   <!-- // <script src="js/histogram.js" charset="utf-8"></script> -->
   <script src="js/state.js" charset="utf-8"></script>
   <script src="js/util.js" charset="utf-8"></script>
+  <!-- // <script src="js/dropdown.js" charset="utf-8"></script> -->
   <style>
   .featureUl {
     padding: 0;
@@ -75,9 +76,18 @@
       line-height: 20px;
   }  
   </style>
+
 </head>
+
 <body onload="start()">
   <div id="head"></div>
+  <div>Choose a dataset<br/>
+  <select id="select-list">
+    <option value="0">PLUTO</option> 
+    <option value="1">Ozone</option>
+    <option value="2">Holder</option>
+  </select>
+  </div>
   <div id="listA"></div>
   <div id="main"></div>
   <div id="listB"></div>
@@ -103,15 +113,18 @@ function tooltip(d) {
         .html(d.Category);
 
     d3.select("#tooltip").classed("hidden", false);
-}
-
-function start() {
+};
+var fileIndex = 0
+function start(fileIndex) {
+  // var fileIndex = 1
+  
   var size = 500;
   var width = 200;
   var height = 100;
   var radius = 5;
-  var file = "data/ozone2.csv";
   var columns = "Xcoord,Ycoord".split(",");
+  var fileList = "data/PLUTOmdsTSNE1.csv,data/ozone2.csv".split(",")
+  var file = fileList[fileIndex];
   var fA = "Xcoord";
   var fB = "Ycoord";
   var allIxs = [];
@@ -291,6 +304,15 @@ function start() {
     // });
   });
 }
+// $("#head").remove();
+
+start(fileIndex)
+
+d3.select("#select-list").on("change", function(){
+  var dataIndex = eval(d3.select(this).property('value'));
+  buttons = []
+  start(parseInt(dataIndex));
+});
 </script>
 
 </body>
