@@ -14,6 +14,7 @@
   <script src="js/state.js" charset="utf-8"></script>
   <script src="js/util.js" charset="utf-8"></script>
   <!-- // <script src="js/dropdown.js" charset="utf-8"></script> -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <style>
   .featureUl {
     padding: 0;
@@ -79,7 +80,7 @@
 
 </head>
 
-<body onload="start()">
+<body>
   <div id="head"></div>
   <div>Choose a dataset<br/>
   <select id="select-list">
@@ -302,17 +303,20 @@ function start(fileIndex) {
     //     histogram.update(s, cA || cIxs);
     //   }
     // });
+
+  });
+  d3.select("#select-list").on("change", function(){
+    var dataIndex = eval(d3.select(this).property('value'));
+    $(".btn-group").remove();
+    start(parseInt(dataIndex));
+    
   });
 }
 // $("#head").remove();
 
 start(fileIndex)
 
-d3.select("#select-list").on("change", function(){
-  var dataIndex = eval(d3.select(this).property('value'));
-  buttons = []
-  start(parseInt(dataIndex));
-});
+
 </script>
 
 </body>
