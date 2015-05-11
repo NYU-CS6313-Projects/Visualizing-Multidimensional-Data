@@ -40,6 +40,7 @@ d3.csv(datafile, function(error, data) {
   var domainByTrait = {};
   var attributelist = d3.keys(data[0]);
   var traits = [];
+  var rows = 0;
   for (index in indexlist) {
     traits.push(attributelist[indexlist[index]]);
   }
@@ -48,13 +49,12 @@ d3.csv(datafile, function(error, data) {
 
   traits.forEach(function(trait) {
     domainByTrait[trait] = d3.extent(data, function(d) { 
-      console.log(d[trait])
+      rows = rows + 1;
       return parseFloat(d[trait]); 
     });
-
   });
-
-  console.log(domainByTrait)
+  rows = rows/indexlist.length;
+  console.log(rows)
 
   xAxis.tickSize(size * n);
   yAxis.tickSize(-size * n);
@@ -115,7 +115,7 @@ d3.csv(datafile, function(error, data) {
         .attr("cx", function(d) { return x(d[p.x]); })
         .attr("cy", function(d) { return y(d[p.y]); })
         .attr("r", 10/indexlist.length)
-        .style("fill-opacity", .1)
+        .style("fill-opacity", .1*Math.log10(rows))
         .style("fill", "crimson");
   }
 
