@@ -2,7 +2,7 @@
  * Created by krause on 2015-04-03 10:17am.
  */
 
-function Featurelist(sel, width, height, selectFeature) {
+function Featurelist(sel, width, height, selectFeature, pushFeature) {
   var that = this;
   var features = [];
   sel.style({
@@ -25,7 +25,12 @@ function Featurelist(sel, width, height, selectFeature) {
     });
     els.exit().remove();
     els.enter().append("li").classed("featureLi", true).on("click", function(f) {
-      selectFeature(f);
+      if(d3.event.shiftKey) {
+        pushFeature(f);
+      }else {
+        selectFeature(f);
+      }
+      
     }).text(function(f, i) {
       return labels[i];
     });

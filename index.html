@@ -273,6 +273,11 @@ function start(fileIndex) {
     featurelistA = new Featurelist(listA, width, size, function(ix) { // selectFeature
       state.selIxs([ ix ]);
       state.update(false, false, false, true);
+    }, function(ix){ //pushFeature
+      state.selIxs().push(ix);
+      state.update(false, false, false, true);
+      scatterplot.colorIxs(state.selIxs(), "crimson");
+      
     });
     featurelistA.setFeatures(state.ixs());
     state.addListener(function(s, cA, cB, cIxs, cSel) {
