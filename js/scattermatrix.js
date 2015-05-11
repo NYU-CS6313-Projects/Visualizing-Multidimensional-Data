@@ -6,6 +6,14 @@ var width = 500,
     size = width*.9/indexlist.length,
     padding = .05*size;
 
+var paddingLeft = 150;
+var paddingRight = 50;
+var paddingTop = 10 + (paddingLeft + paddingRight) * 0.5;
+var paddingBottom = 20 + (paddingLeft + paddingRight) * 0.5;
+this.padding = function() {
+  return [ paddingTop, paddingRight, paddingBottom, paddingLeft ];
+};
+
 var x = d3.scale.linear()
     .range([padding / 2, size - padding / 2]);
 
@@ -39,8 +47,14 @@ d3.csv(datafile, function(error, data) {
   console.log(traits)
 
   traits.forEach(function(trait) {
-    domainByTrait[trait] = d3.extent(data, function(d) { return d[trait]; });
+    domainByTrait[trait] = d3.extent(data, function(d) { 
+      console.log(d[trait])
+      return parseFloat(d[trait]); 
+    });
+
   });
+
+  console.log(domainByTrait)
 
   xAxis.tickSize(size * n);
   yAxis.tickSize(-size * n);
