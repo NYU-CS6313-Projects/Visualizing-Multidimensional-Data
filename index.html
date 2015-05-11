@@ -84,11 +84,11 @@
   <div id="head"></div>
   <div>Choose a dataset<br/>
   <select id="select-list">
-    <option value="0">PLUTO</option> 
-    <option value="1">Ozone</option>
+    <option value="0">Ozone</option>
+    <option value="1">Basketball Tournament</option>
     <option value="2">Voice Rehabilitation</option>
     <option value="3">World Music</option>
-    <option value="4">Basketball Tournament</option>
+    <option value="4">PLUTO</option>     
   </select>
   </div>
   <div id="listA"></div>
@@ -126,7 +126,7 @@ function start(fileIndex) {
   var height = 100;
   var radius = 5;
   var columns = "Xcoord,Ycoord".split(",");
-  var fileList = "data/PLUTOmds.csv,data/ozone_TSNE.csv,data/LSVT_voice_rehabilitation_TSNE.csv,data/World Music_TSNE.csv,data/Basketball Tournament_TSNE.csv".split(",")
+  var fileList = "data/ozone_TSNE.csv,data/Basketball Tournament_TSNE.csv,data/LSVT_voice_rehabilitation_TSNE.csv,data/World Music_TSNE.csv,data/PLUTOmds.csv".split(",")
   var file = fileList[fileIndex];
   var fA = "Xcoord";
   var fB = "Ycoord";
