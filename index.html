@@ -10,6 +10,7 @@
   <script src="js/dimension.js" charset="utf-8"></script>
   <script src="js/scatterplot.js" charset="utf-8"></script>
   <script src="js/featurelist.js" charset="utf-8"></script>
+  <script src="js/scattermatrix.js" charset="utf-8"></script>
   <!-- // <script src="js/histogram.js" charset="utf-8"></script> -->
   <script src="js/state.js" charset="utf-8"></script>
   <script src="js/util.js" charset="utf-8"></script>
@@ -313,7 +314,7 @@ function start(fileIndex) {
     // });
 
   });
-  scattermatrix = new Scattermatrix(scatter, fileSPM, 0)
+  scattermatrix = new Scattermatrix(scatter, fileSPM, ['WSR0','WSR1','WSR2'])
   
   d3.select("#select-list").on("change", function(){
     var dataIndex = eval(d3.select(this).property('value'));
