@@ -92,6 +92,7 @@ d3.csv(datafile, function(error, data) {
         .attr("width", size - padding)
         .attr("height", size - padding)
         .attr("fill", "white")
+        .style("fill-opacity", 0)
         .style("stroke", "lightgray");
 
     cell.selectAll("circle")
