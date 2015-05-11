@@ -1,9 +1,9 @@
 
 
-function Scattermatrix(sel, datafile, attributelist){
+function Scattermatrix(sel, datafile, indexlist){
 
 var width = 500,
-    size = width*.9/attributelist.length,
+    size = width*.9/indexlist.length,
     padding = .05*size;
 
 var x = d3.scale.linear()
@@ -30,9 +30,14 @@ sel.style({
 
 
 d3.csv(datafile, function(error, data) {
-  var domainByTrait = {},
-      traits = attributelist,
-      n = traits.length;
+  var domainByTrait = {};
+  var attributelist = d3.keys(data[0]);
+  var traits = [];
+  for (index in indexlist) {
+    traits.push(attributelist[indexlist[index]+1]);
+  }
+  var n = traits.length;
+  console.log(traits)
 
   traits.forEach(function(trait) {
     domainByTrait[trait] = d3.extent(data, function(d) { return d[trait]; });
@@ -94,7 +99,7 @@ d3.csv(datafile, function(error, data) {
       .enter().append("circle")
         .attr("cx", function(d) { return x(d[p.x]); })
         .attr("cy", function(d) { return y(d[p.y]); })
-        .attr("r", 10/attributelist.length)
+        .attr("r", 10/indexlist.length)
         .style("fill-opacity", .1)
         .style("fill", "crimson");
   }

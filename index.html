@@ -138,6 +138,7 @@ function start(fileIndex) {
 
   var state = new State();
   var scatterplot = null;
+  var scattermatrix = null;
   var featurelistA = null;
   var featurelistB = null;
   var histogram = null;
@@ -186,6 +187,13 @@ function start(fileIndex) {
   }).text("show all").on("click", function() {
     state.ixs(allIxs);
     state.update(false, false, true, false);
+  });
+  buttons.append("button").classed({
+    "btn": true,
+    "btn-default": true
+  }).text("examine selection").on("click", function() {
+    //$("#scatter").remove();  
+    scattermatrix = new Scattermatrix(scatter, fileSPM, state.selIxs());
   });
 
   d3.csv(fileTSNE, function(error, data) {
@@ -314,7 +322,7 @@ function start(fileIndex) {
     // });
 
   });
-  scattermatrix = new Scattermatrix(scatter, fileSPM, ['WSR0','WSR1','WSR2'])
+
   
   d3.select("#select-list").on("change", function(){
     var dataIndex = eval(d3.select(this).property('value'));
