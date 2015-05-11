@@ -63,19 +63,19 @@ d3.csv(datafile, function(error, data) {
     .append("g")
       .attr("transform", "translate(" + padding + "," + padding / 2 + ")");
 
-  svg.selectAll(".x.axis")
-      .data(traits)
-    .enter().append("g")
-      .attr("class", "x axis")
-      .attr("transform", function(d, i) { return "translate(" + (n - i - 1) * size + ",0)"; })
-      .each(function(d) { x.domain(domainByTrait[d]); d3.select(this).call(xAxis); });
+  // svg.selectAll(".x.axis")
+  //     .data(traits)
+  //   .enter().append("g")
+  //     .attr("class", "x axis")
+  //     .attr("transform", function(d, i) { return "translate(" + (n - i - 1) * size + ",0)"; })
+  //     .each(function(d) { x.domain(domainByTrait[d]); d3.select(this).call(xAxis); });
 
-  svg.selectAll(".y.axis")
-      .data(traits)
-    .enter().append("g")
-      .attr("class", "y axis")
-      .attr("transform", function(d, i) { return "translate(0," + i * size + ")"; })
-      .each(function(d) { y.domain(domainByTrait[d]); d3.select(this).call(yAxis); });
+  // svg.selectAll(".y.axis")
+  //     .data(traits)
+  //   .enter().append("g")
+  //     .attr("class", "y axis")
+  //     .attr("transform", function(d, i) { return "translate(0," + i * size + ")"; })
+  //     .each(function(d) { y.domain(domainByTrait[d]); d3.select(this).call(yAxis); });
 
   var cell = svg.selectAll(".cell")
       .data(cross(traits, traits))
