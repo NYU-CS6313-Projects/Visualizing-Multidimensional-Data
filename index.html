@@ -141,8 +141,26 @@ function start(fileIndex) {
   var height = 100;
   var radius = 5;
   var columns = "Xcoord,Ycoord".split(",");
-  var fileListTSNE = "data/ozone_TSNE.csv,data/Ozone MDS.csv,data/Basketball Tournament_TSNE.csv,data/Basketball Tournament MDS.csv,data/LSVT_voice_rehabilitation_TSNE.csv,LSVT_voice_rehabilitation MDS.csv,data/World Music_TSNE.csv,data/World Music MDS.csv,data/PLUTO tSNE.csv,data/PLUTO MDS.csv".split(",")
-  var fileListSPM = "data/ozoneHR2.csv,data/ozoneHR2.csv,data/Basketball Tournament.csv,data/Basketball Tournament.csv,data/LSVT_voice_rehabilitation.csv,data/LSVT_voice_rehabilitation.csv,data/World Music.csv,data/World Music.csv,data/SIcleanNumericalReduced.csv,data/SIcleanNumericalReduced.csv".split(",")
+  var fileListTSNE = ["data/ozone_TSNE.csv",
+                      "data/Ozone MDS.csv",
+                      "data/Basketball Tournament_TSNE.csv",
+                      "data/Basketball Tournament MDS.csv",
+                      "data/LSVT_voice_rehabilitation_TSNE.csv",
+                      "data/LSVT_voice_rehabilitation MDS.csv",
+                      "data/World Music_TSNE.csv",
+                      "data/World Music MDS.csv",
+                      "data/PLUTO tSNE.csv",
+                      "data/PLUTO MDS.csv"]
+  var fileListSPM = ["data/ozoneHR2.csv",
+                     "data/ozoneHR2.csv",
+                     "data/Basketball Tournament.csv",
+                     "data/Basketball Tournament.csv",
+                     "data/LSVT_voice_rehabilitation.csv",
+                     "data/LSVT_voice_rehabilitation.csv",
+                     "data/World Music.csv",
+                     "data/World Music.csv",
+                     "data/SIcleanNumericalReduced.csv",
+                     "data/SIcleanNumericalReduced.csv"]
   var fileTSNE = fileListTSNE[fileIndex];
   var fileSPM = fileListSPM[fileIndex];
   var fA = "Xcoord";
