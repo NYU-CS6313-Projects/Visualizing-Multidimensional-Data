@@ -108,14 +108,47 @@ d3.csv(datafile, function(error, data) {
         .style("fill-opacity", 0)
         .style("stroke", "lightgray");
 
-    cell.selectAll("circle")
-        .data(data)
-      .enter().append("circle")
-        .attr("cx", function(d) { return x(d[p.x]); })
-        .attr("cy", function(d) { return y(d[p.y]); })
-        .attr("r", 10/indexlist.length)
-        .style("fill-opacity", .1*Math.log10(rows))
+    // console.log(data[0][p.x])
+
+    if (p.x === p.y){
+      holder = []
+      for (i = 0; i < data.length; i++) { 
+        holder.push(data[i][p.x]);
+      }
+      
+      var data1 = d3.layout.histogram()
+        .bins(x.ticks(20))
+        (holder);
+      var histy = d3.scale.linear()
+        .domain([0, d3.max(data1, function(d) { return d.y; })])
+        .range([size - padding, (size - padding)*0.15]);
+      var bar = cell.selectAll(".bar")
+        .data(data1)
+      .enter().append("g")
+        .attr("class", "bar")
+        .attr("transform", function(d) { return "translate(" + x(d.x) + "," + histy(d.y) + ")"; })
+        .style("fill-opacity", 0.7)
         .style("fill", "crimson");
+
+      console.log(x(data1[0].dx));
+      console.log(x(data1[0]));
+
+      bar.append("rect")
+        .attr("x", 1)
+        .attr("width", x(data1[0].dx) - 5)
+        .attr("height", function(d) { return (size - padding) - y(d.y); });
+
+    }else{
+
+      cell.selectAll("circle")
+          .data(data)
+        .enter().append("circle")
+          .attr("cx", function(d) { return x(d[p.x]); })
+          .attr("cy", function(d) { return y(d[p.y]); })
+          .attr("r", 10/indexlist.length)
+          .style("fill-opacity", .1*Math.log10(rows))
+          .style("fill", "crimson");
+    }
   }
 
   function cross(a, b) {
