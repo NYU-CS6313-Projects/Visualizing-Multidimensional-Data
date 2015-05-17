@@ -108,12 +108,12 @@ d3.csv(datafile, function(error, data) {
         .style("fill-opacity", 0)
         .style("stroke", "lightgray");
 
-    // console.log(data[0][p.x])
+    console.log(data[0][p.x])
 
     if (p.x === p.y){
       holder = []
       for (i = 0; i < data.length; i++) { 
-        holder.push(data[i][p.x]);
+        holder.push(parseFloat(data[i][p.x]));
       }
       
       var data1 = d3.layout.histogram()
@@ -130,13 +130,13 @@ d3.csv(datafile, function(error, data) {
         .style("fill-opacity", 0.7)
         .style("fill", "crimson");
 
-      console.log(x(data1[0].dx));
-      console.log(x(data1[0]));
+      console.log(x(data[0].dx));
+      console.log(data[0]);
 
       bar.append("rect")
         .attr("x", 1)
         .attr("width", x(data1[0].dx) - 5)
-        .attr("height", function(d) { return (size - padding) - y(d.y); });
+        .attr("height", size - padding);
 
     }else{
 
