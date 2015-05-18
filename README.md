@@ -1,8 +1,8 @@
 # Visualizing Multidimensional Data
 
-TODO describe project here
+## Abstract
+With data creation and curation becoming easier and cheaper, the new problem has become understanding our data. We have created a tool that combines many analytical techniques together to give insight on multidimensional datasets. The tool helps explore relationships the user may not have known existed. If the user had specific attributes in mind, the tool helps suggest other attributes that are similar to it. Finally, the tool visualizes these relationships with a scattermatrix so the user can better understand their data and these relationships. 
 
 A live demo can be found [here](http://NYU-CS6313-Projects.github.io/Visualizing-Multidimensional-Data/).
 
-You can use the `deploy.sh` script to keep the `gh-pages` branch up-to-date.
-When forking this project be sure to update the link to the demo page in this file.
+
