@@ -5,4 +5,6 @@ With data creation and curation becoming easier and cheaper, the new problem has
 
 A live demo can be found [here](http://NYU-CS6313-Projects.github.io/Visualizing-Multidimensional-Data/).
 
-A video demo can be found [here](https://vimeo.com/128109250).
+A video demo can be found below:
+
+[![Visualizing Multidimensional Data](https://i.vimeocdn.com/video/519119609_150x84.jpg)](https://vimeo.com/128109250).
